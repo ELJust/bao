@@ -4,18 +4,30 @@ BAO...
 """
 
 # Set up players and board
-x = [2, 2, 2, 2, 2, 2, 2, 2, 
-     2, 2, 2, 2, 2, 2, 2, 2,]
-y = [2, 2, 2, 2, 2, 2, 2, 2, 
-     2, 2, 2, 2, 2, 2, 2, 2,]
 
-handx = 0
-handy = 0
+p1_board = [2] * 16
+p2_board = [2] *16
+
+hand1 = 0
+hand2 = 0
 
 # Print status of the game
-print('Player One Board:', x)
-print('Player One Hand:', handx)
-print('Player Two Board:', y)
-print('Player Two Hand:', handy)
+print('Player One Board:', p1_board)
+print('Player One Hand:', hand1)
+print('Player Two Board:', p2_board)
+print('Player Two Hand:', hand2)
 
-# Move 
+# Define the different moves
+def empty_1(p1_board, hand1):
+    # Say I start at the first whole
+    # maybe try the for loop -- not working
+    for number in p1_board :
+        hand1 += p1_board[1] 
+    p1_board[1] = 0
+
+    return
+
+# Try out the different moves
+result = empty_1(p1_board, hand1)
+print('Player One Board:', p1_board)
+print('Player One Hand:', hand1)  
