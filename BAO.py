@@ -2,25 +2,26 @@
 """
 BAO...
 """
+from BAO_functions import printing
 
 # Set up players and board
 p1_board = [2] * 16
 p2_board = [2] *16
 
-p1_board[15] = 0
+p1_board[0] = 0
 hand1 = 0
 hand2 = 0
 
-# Print status of the game
-print('Player One Board:', p1_board)
-print('Player One Hand:', hand1)
-print('Player Two Board:', p2_board)
-print('Player Two Hand:', hand2)
+# Print
+print(printing(p1_board, p2_board, hand1, hand2))
+
 
 def add_value(p1_board, hand1):
-    hand1 = 0
-    output = hand1 + p1_board[0]
-    return output
+    for i in p1_board:
+        hand1 += p1_board[i]
+
+    return hand1
+
 
 # Define the empty move
 def empty_1(p1_board, hand1):
@@ -39,9 +40,11 @@ print('Player One Hand:', hand1)
 
 # Define move
 def move(p1_board, hand1):
-    """ while hand1 >1: i+1 += 1,
-    if hand == 1: i += 1
-    eat
+    """ while hand1 >0: i+1 += 1 and 
+    hand1 = hand1 - 1
+    for hand1 = 0:
+        if p1_board[i] > 1: eat
+        else: player2's turn!
     """
     return    
 

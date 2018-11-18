@@ -1,0 +1,34 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov 18 14:37:19 2018
+
+@author: Eva
+"""
+# Functions that returns current status of board
+def printing(p1_board, p2_board, hand1, hand2):
+    print('-------------- Player One --------------')
+    print('Pebbles in hand:' , hand1)
+    print('-----------------------------------------')
+    print('|' , p1_board[0], '||', p1_board[1], '||',
+      p1_board[2], '||', p1_board[3], '||', p1_board[4],
+      '||', p1_board[5], '||', p1_board[6], '||', p1_board[7],
+      '|' )
+    print('-----------------------------------------')
+    print('|' , p1_board[15], '||', p1_board[14], '||',
+      p1_board[13], '||', p1_board[12], '||', p1_board[11],
+      '||', p1_board[10], '||', p1_board[9], '||', p1_board[8],
+      '|')
+    print('-----------------------------------------')
+    print('-----------------------------------------')
+    print('|' , p2_board[0], '||', p2_board[1], '||',
+      p2_board[2], '||', p2_board[3], '||', p2_board[4],
+      '||', p2_board[5], '||', p2_board[6], '||', p2_board[7],
+      '|' )
+    print('-----------------------------------------')
+    print('|' , p2_board[15], '||', p2_board[14], '||',
+      p2_board[13], '||', p2_board[12], '||', p2_board[11],
+      '||', p2_board[10], '||', p2_board[9], '||', p2_board[8],
+      '|')
+    print('-----------------------------------------')
+    print('Pebbles in hand:', hand2)
+    print('-------------- Player Two --------------')
