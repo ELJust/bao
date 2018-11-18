@@ -8,18 +8,18 @@ from BAO_functions import printing
 p1_board = [2] * 16
 p2_board = [2] *16
 
-p1_board[0] = 0
+p1_board[15] = 10
 hand1 = 0
 hand2 = 0
 
-# Print
-print(printing(p1_board, p2_board, hand1, hand2))
-
-
 def add_value(p1_board, hand1):
-    
+    hand1 = 0
+    hand1 += p1_board[15]
 
     return hand1
+
+# Print
+print(printing(p1_board, p2_board, hand1, hand2))
 
 
 # Define the empty move
