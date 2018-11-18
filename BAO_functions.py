@@ -9,14 +9,14 @@ def printing(p1_board, p2_board, hand1, hand2):
     print('-------------- Player One --------------')
     print('Pebbles in hand:' , hand1)
     print('-----------------------------------------')
-    print('|' , p1_board[0], '||', p1_board[1], '||',
-      p1_board[2], '||', p1_board[3], '||', p1_board[4],
-      '||', p1_board[5], '||', p1_board[6], '||', p1_board[7],
+    print('|' , p1_board[8], '||', p1_board[9], '||',
+      p1_board[10], '||', p1_board[11], '||', p1_board[12],
+      '||', p1_board[13], '||', p1_board[14], '||', p1_board[15],
       '|' )
     print('-----------------------------------------')
-    print('|' , p1_board[15], '||', p1_board[14], '||',
-      p1_board[13], '||', p1_board[12], '||', p1_board[11],
-      '||', p1_board[10], '||', p1_board[9], '||', p1_board[8],
+    print('|' , p1_board[7], '||', p1_board[6], '||',
+      p1_board[5], '||', p1_board[4], '||', p1_board[3],
+      '||', p1_board[2], '||', p1_board[1], '||', p1_board[0],
       '|')
     print('-----------------------------------------')
     print('-----------------------------------------')

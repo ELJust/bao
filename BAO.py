@@ -17,8 +17,7 @@ print(printing(p1_board, p2_board, hand1, hand2))
 
 
 def add_value(p1_board, hand1):
-    for i in p1_board:
-        hand1 += p1_board[i]
+    
 
     return hand1
 
