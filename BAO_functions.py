@@ -32,3 +32,24 @@ def printing(p1_board, p2_board, hand1, hand2):
     print('-----------------------------------------')
     print('Pebbles in hand:', hand2)
     print('-------------- Player Two --------------')
+
+
+
+def turn(current_board, opponent_board, start):
+    hand = 0
+    
+    #Start
+    hand += current_board[start]
+    current_board[start] = 0
+    i = start 
+    #move
+    while hand > 0:
+        while hand > 0:
+            i = (i + 1) % 16
+            current_board[i] += 1
+            hand -= 1
+        if current_board[i] > 1:
+            hand += current_board[i]
+            current_board[i] = 0 
+    
+    return current_board, opponent_board
