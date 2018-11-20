@@ -4,7 +4,7 @@ Created on Sun Nov 18 14:37:19 2018
 
 @author: Eva
 """
-# Functions that returns current status of board
+# Return current status of board, including hand
 def printing(p1_board, p2_board, hand1, hand2):
     print('-------------- Player One --------------')
     print('Pebbles in hand:' , hand1)
@@ -33,16 +33,29 @@ def printing(p1_board, p2_board, hand1, hand2):
     print('Pebbles in hand:', hand2)
     print('-------------- Player Two --------------')
 
+# Assign opposing holes to each hole of the current board
+def opposite:
+    
+    return
 
 
+# Define how a turn works
 def turn(current_board, opponent_board, start):
     hand = 0
     
-    #Start
+    """ Start by putting all pebbles of a given hole into
+    the hand """
     hand += current_board[start]
     current_board[start] = 0
     i = start 
-    #move
+    """ to do : eat
+    if p1_board[i] >= 1 and 
+    p1_board[i_gegenüber]>=1:
+        empty
+    else: move    
+    """
+    """ move, putting one pebble from hand into the neighbouring
+    hole of the current board"""
     while hand > 0:
         while hand > 0:
             i = (i + 1) % 16
