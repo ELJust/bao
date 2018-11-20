@@ -33,11 +33,26 @@ def printing(p1_board, p2_board, hand1, hand2):
     print('Pebbles in hand:', hand2)
     print('-------------- Player Two --------------')
 
-# Assign opposing holes to each hole of the current board
-def opposite:
-    
-    return
+# Assign two opposing holes to each hole of the current board
+def opposing(current_board, opponent_board):
+    if current_board[0]:
+        opposing = opponent_board[7], opponent_board[8]
+    if current_board[1]:
+        opposing = opponent_board[6], opponent_board[9]
+    if current_board[2]:
+        opposing = opponent_board[5], opponent_board[10]
+    if current_board[3]:
+        opposing = opponent_board[4], opponent_board[11] 
+    if current_board[4]:
+        opposing = opponent_board[3], opponent_board[12]
+    if current_board[5]:
+        opposing = opponent_board[2], opponent_board[13]
+    if current_board[6]:
+        opposing = opponent_board[1], opponent_board[14]
+    if current_board[7]:
+        opposing = opponent_board[0], opponent_board[15]
 
+    return opposing
 
 # Define how a turn works
 def turn(current_board, opponent_board, start):
