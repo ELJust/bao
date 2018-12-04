@@ -63,13 +63,8 @@ def turn(current_board, opponent_board, start):
     hand += current_board[start]
     current_board[start] = 0
     i = start 
-    """ to do : eat
-    if p1_board[i] >= 1 and 
-    p1_board[i_gegenüber]>=1:
-        empty
-    else: move    
-    """
-    """ move, putting one pebble from hand into the neighbouring
+    
+    """ To move put one pebble from hand into the neighbouring
     hole of the current board"""
     while hand > 0:
         while hand > 0:
@@ -79,5 +74,9 @@ def turn(current_board, opponent_board, start):
         if current_board[i] > 1:
             hand += current_board[i]
             current_board[i] = 0 
+            if opposing[i] > 0: # wie prüfe ich, ob beide wirklich Steine haben?
+                hand += opposing[i]
+                opposing[i] = 0
+
     
     return current_board, opponent_board
