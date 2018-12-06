@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Nov 18 14:37:19 2018
-
-@author: Eva
+These are the functions for printing out the current status 
+of the board, assigning two opposing holes for each front-row
+hole, and defining how a turn works.
 """
-# Return current status of board, including hand
+
 def printing(p1_board, p2_board, hand1, hand2):
+    """ Return the current status of the board, including 
+    what is left in each player's hand
+    """
     print('-------------- Player One --------------')
     print('Pebbles in hand:' , hand1)
     print('-----------------------------------------')
@@ -33,8 +36,11 @@ def printing(p1_board, p2_board, hand1, hand2):
     print('Pebbles in hand:', hand2)
     print('-------------- Player Two --------------')
 
-# Assign two opposing holes to each hole of the current board
+
 def opposing(current_board, opponent_board):
+    """ Assign two opposing holes to each hole of the current
+    board.
+    """
     if current_board[0]:
         opp1 = opponent_board[7] 
         opp2 = opponent_board[8]
@@ -72,8 +78,8 @@ def turn(current_board, opponent_board, start):
     current_board[start] = 0
     i = start 
     
-    """ To move put one pebble from hand into the neighbouring
-    hole of the current board"""
+    """ To move, put one pebble from hand into the neighbouring
+    hole of the current board, until it is empty."""
     while hand > 0:
         while hand > 0:
             i = (i + 1) % 16
@@ -82,10 +88,14 @@ def turn(current_board, opponent_board, start):
         if current_board[i] > 1:
             hand += current_board[i]
             current_board[i] = 0 
-            if opp1[i] > 0 and opp2[i] > 0:
-                hand += opp1[i] + opp2[i]
-                opp1[i] = 0
-                opp2[i] = 0
+            
+            """ Eat the pebbles of the opponent, iff the both
+             of the two opposing holes are filled. 
+            """
+            if opposing[i] > 0:
+                hand += opposing[i]
 
+# Go back to move and repeat until the last pebble from hand
+# is put into an empty hole.
     
     return current_board, opponent_board
