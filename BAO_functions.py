@@ -36,23 +36,31 @@ def printing(p1_board, p2_board, hand1, hand2):
 # Assign two opposing holes to each hole of the current board
 def opposing(current_board, opponent_board):
     if current_board[0]:
-        opposing = opponent_board[7], opponent_board[8]
+        opp1 = opponent_board[7] 
+        opp2 = opponent_board[8]
     if current_board[1]:
-        opposing = opponent_board[6], opponent_board[9]
+        opp1 = opponent_board[6]
+        opp2 = opponent_board[9]
     if current_board[2]:
-        opposing = opponent_board[5], opponent_board[10]
+        opp1 = opponent_board[5]
+        opp2 = opponent_board[10]
     if current_board[3]:
-        opposing = opponent_board[4], opponent_board[11] 
+        opp1 = opponent_board[4] 
+        opp2 = opponent_board[11] 
     if current_board[4]:
-        opposing = opponent_board[3], opponent_board[12]
+        opp1 = opponent_board[3] 
+        opp2 = opponent_board[12]
     if current_board[5]:
-        opposing = opponent_board[2], opponent_board[13]
+        opp1 = opponent_board[2]
+        opp2 = opponent_board[13]
     if current_board[6]:
-        opposing = opponent_board[1], opponent_board[14]
+        opp1 = opponent_board[1]
+        opp2 = opponent_board[14]
     if current_board[7]:
-        opposing = opponent_board[0], opponent_board[15]
+        opp1 = opponent_board[0] 
+        opp2 = opponent_board[15]
 
-    return opposing
+    return opp1, opp2
 
 # Define how a turn works
 def turn(current_board, opponent_board, start):
@@ -74,9 +82,10 @@ def turn(current_board, opponent_board, start):
         if current_board[i] > 1:
             hand += current_board[i]
             current_board[i] = 0 
-            if opposing[i] > 0: # wie prüfe ich, ob beide wirklich Steine haben?
-                hand += opposing[i]
-                opposing[i] = 0
+            if opp1[i] > 0 and opp2[i] > 0:
+                hand += opp1[i] + opp2[i]
+                opp1[i] = 0
+                opp2[i] = 0
 
     
     return current_board, opponent_board
