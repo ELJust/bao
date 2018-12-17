@@ -37,36 +37,46 @@ def printing(p1_board, p2_board, hand1, hand2):
     print('-------------- Player Two --------------')
 
 
-def opposing(current_board, opponent_board):
+def eat(i, opponent_board):
     """ Assign two opposing holes to each hole of the current
     board.
     """
-    if current_board[0]:
-        opp1 = opponent_board[7] 
-        opp2 = opponent_board[8]
-    if current_board[1]:
-        opp1 = opponent_board[6]
-        opp2 = opponent_board[9]
-    if current_board[2]:
-        opp1 = opponent_board[5]
-        opp2 = opponent_board[10]
-    if current_board[3]:
-        opp1 = opponent_board[4] 
-        opp2 = opponent_board[11] 
-    if current_board[4]:
-        opp1 = opponent_board[3] 
-        opp2 = opponent_board[12]
-    if current_board[5]:
-        opp1 = opponent_board[2]
-        opp2 = opponent_board[13]
-    if current_board[6]:
-        opp1 = opponent_board[1]
-        opp2 = opponent_board[14]
-    if current_board[7]:
-        opp1 = opponent_board[0] 
-        opp2 = opponent_board[15]
+   # opp1=7-i
+    #opp2=8+i
+    if i == 0:
+        opp1 = 7 
+        opp2 = 8
+    if i == 1:
+        opp1 = 6
+        opp2 = 9
+    if i == 2:
+        opp1 = 5
+        opp2 = 10
+    if i == 3:
+        opp1 = 4 
+        opp2 = 11 
+    if i == 4:
+        opp1 = 3 
+        opp2 = 12
+    if i == 5:
+        opp1 = 2
+        opp2 = 13
+    if i == 6:
+        opp1 = 1
+        opp2 = 14
+    if i == 7:
+        opp1 = 0 
+        opp2 = 15
 
-    return opp1, opp2
+    add_to_hand = 0
+    if i >= 0 and i <= 7:
+        if opponent_board[opp1] > 0 and opponent_board[opp2] > 0:
+            add_to_hand = opponent_board[opp1] + opponent_board[opp2]
+            opponent_board[opp1] = 0
+            opponent_board[opp2] = 0
+
+    return add_to_hand
+    #return opp1, opp2
 
 # Define how a turn works
 def turn(current_board, opponent_board, start):
@@ -89,13 +99,14 @@ def turn(current_board, opponent_board, start):
             hand += current_board[i]
             current_board[i] = 0 
             
-            """ Eat the pebbles of the opponent, iff the both
+            """ Eat the pebbles of the opponent, iff both
              of the two opposing holes are filled. 
             """
-            if opposing[i] > 0:
-                hand += opposing[i]
-
-# Go back to move and repeat until the last pebble from hand
-# is put into an empty hole.
+            hand += eat(i, opponent_board)
     
-    return current_board, opponent_board
+
+
+
+
+
+
