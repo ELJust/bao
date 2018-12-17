@@ -2,7 +2,7 @@
 """
 BAO...
 """
-from BAO_functions import printing
+from BAO_functions import print_field
 from BAO_functions import turn
 
 
@@ -15,10 +15,11 @@ hand = 0
 turn(p1_board, p2_board, 1)
 
 # Print
-printing(p1_board, p2_board, hand, 0)
+print_field(p1_board, p2_board, hand, 0)
    
 turn(p2_board, p1_board, 1)
 
-while opponent_board insg >= 5:
-    turn
-print(*player x won!)
+#def game(current_board, opponent_board):
+#while opponent_board insg >= 5:
+ #   turn
+#print(*player x won!)

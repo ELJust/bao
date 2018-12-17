@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 These are the functions for printing out the current status 
-of the board, assigning two opposing holes for each front-row
-hole, and defining how a turn works.
+of the board, defining the eat-move and how a turn works.
 """
 
-def printing(p1_board, p2_board, hand1, hand2):
+def print_field(p1_board, p2_board, hand1, hand2):
     """ Return the current status of the board, including 
     what is left in each player's hand
     """
@@ -38,35 +37,13 @@ def printing(p1_board, p2_board, hand1, hand2):
 
 
 def eat(i, opponent_board):
-    """ Assign two opposing holes to each hole of the current
+    """ Assign two opposing holes to each front-row hole of the current
     board.
+    Eat the pebbles of the opponent, iff both of the two opposing holes 
+    are filled. 
     """
-   # opp1=7-i
-    #opp2=8+i
-    if i == 0:
-        opp1 = 7 
-        opp2 = 8
-    if i == 1:
-        opp1 = 6
-        opp2 = 9
-    if i == 2:
-        opp1 = 5
-        opp2 = 10
-    if i == 3:
-        opp1 = 4 
-        opp2 = 11 
-    if i == 4:
-        opp1 = 3 
-        opp2 = 12
-    if i == 5:
-        opp1 = 2
-        opp2 = 13
-    if i == 6:
-        opp1 = 1
-        opp2 = 14
-    if i == 7:
-        opp1 = 0 
-        opp2 = 15
+    opp1 = 7-i
+    opp2 = 8+i
 
     add_to_hand = 0
     if i >= 0 and i <= 7:
@@ -76,9 +53,8 @@ def eat(i, opponent_board):
             opponent_board[opp2] = 0
 
     return add_to_hand
-    #return opp1, opp2
 
-# Define how a turn works
+
 def turn(current_board, opponent_board, start):
     hand = 0
     
@@ -89,7 +65,11 @@ def turn(current_board, opponent_board, start):
     i = start 
     
     """ To move, put one pebble from hand into the neighbouring
-    hole of the current board, until it is empty."""
+    hole of the current board, until it is empty. 
+    If the last pebble from hand is put into a hole where there is at least one
+    pebble, put all into the hand plus the value from the opponent, if 
+    applicable. Continue moving.
+    """
     while hand > 0:
         while hand > 0:
             i = (i + 1) % 16
@@ -98,10 +78,6 @@ def turn(current_board, opponent_board, start):
         if current_board[i] > 1:
             hand += current_board[i]
             current_board[i] = 0 
-            
-            """ Eat the pebbles of the opponent, iff both
-             of the two opposing holes are filled. 
-            """
             hand += eat(i, opponent_board)
     
 
