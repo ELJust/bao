@@ -81,7 +81,14 @@ def turn(current_board, opponent_board, start):
             hand += eat(i, opponent_board)
     
 
-
+def pebbles_left(opponent_board, i):
+    """ Check how many pebbles are left on the opponent's board.
+    """
+    pebbles_left = 0
+    for i in opponent_board[i]:
+        pebbles_left += opponent_board[i]
+    
+    return pebbles_left
 
 
 
