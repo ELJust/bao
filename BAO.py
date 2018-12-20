@@ -14,7 +14,7 @@ hand = 0
 
 
 def game(p1_board, p2_board):
-    while pebbles_left > 5:
+    while pebbles_left < 5:
         turn(p1_board, p2_board, 0)
         print_field(p1_board, p2_board, hand, 0)
         turn(p2_board, p1_board, 0)
