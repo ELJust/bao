@@ -4,7 +4,7 @@ These are the functions for printing out the current status
 of the board, defining the eat-move and how a turn works.
 """
 
-def print_field(p1_board, p2_board, hand1, hand2):
+def print_field(p1_board, p2_board, hand1 = 0, hand2 = 0):
     """ Return the current status of the board, including 
     what is left in each player's hand
     """
@@ -81,20 +81,24 @@ def turn(current_board, opponent_board, start):
             hand += eat(i, opponent_board)
     
 
-def pebbles_left(opponent_board):
-    """ Check how many pebbles are left on the opponent's board.
+def pebbles_left(board):
+    """ Check how many pebbles are left on a given board.
     """
-    pebbles_left = 0
+    sum_pebbles = 0
     for i in range(16):
-        pebbles_left += opponent_board[i]
+        sum_pebbles += board[i]
     
-    return pebbles_left
+    return sum_pebbles
 
 def game(p1_board, p2_board):
-    while pebbles_left < 5:
-        turn(p1_board, p2_board, 0)
-        print_field(p1_board, p2_board, hand, 0)
-        turn(p2_board, p1_board, 0)
-        print_field(p1_board, p2_board, hand, 0)
+    while pebbles_left(p1_board) > 5 and pebbles_left(p2_board) > 5:
+        turn(p1_board, p2_board, start(current_board, opponent_board))
+        print_field(p1_board, p2_board) 
+        turn(p2_board, p1_board, start(current_board, opponent_board))
+        print_field(p1_board, p2_board)
     print("Game Over.")
 
+def start(current_board):
+    for i in range(len(current_board)):
+        start = rnd() * 16
+    return start
