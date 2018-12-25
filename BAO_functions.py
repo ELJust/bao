@@ -3,6 +3,8 @@
 These are the functions for printing out the current status 
 of the board, defining the eat-move and how a turn works.
 """
+import random.py
+
 
 def print_field(p1_board, p2_board, hand1 = 0, hand2 = 0):
     """ Return the current status of the board, including 
@@ -92,13 +94,14 @@ def pebbles_left(board):
 
 def game(p1_board, p2_board):
     while pebbles_left(p1_board) > 5 and pebbles_left(p2_board) > 5:
-        turn(p1_board, p2_board, start(current_board, opponent_board))
+        turn(p1_board, p2_board, start(p1_board))
         print_field(p1_board, p2_board) 
-        turn(p2_board, p1_board, start(current_board, opponent_board))
+        turn(p2_board, p1_board, start(p2_board))
         print_field(p1_board, p2_board)
     print("Game Over.")
 
-def start(current_board):
-    for i in range(len(current_board)):
-        start = rnd() * 16
+def start(current_board):       
+    start = random() * 16
+    while current_board[start] == 0:
+        start = random() * 16
     return start
