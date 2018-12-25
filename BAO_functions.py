@@ -94,14 +94,31 @@ def pebbles_left(board):
 
 def game(p1_board, p2_board):
     while pebbles_left(p1_board) > 5 and pebbles_left(p2_board) > 5:
-        turn(p1_board, p2_board, start(p1_board))
+        turn(p1_board, p2_board, random_start(p1_board))
         print_field(p1_board, p2_board) 
-        turn(p2_board, p1_board, start(p2_board))
+        turn(p2_board, p1_board, random_start(p2_board))
         print_field(p1_board, p2_board)
     print("Game Over.")
 
-def start(current_board):       
+def random_start(current_board):  
+    """
+    Start at a random non-empty hole.
+    """     
     start = random() * 16
     while current_board[start] == 0:
         start = random() * 16
+    return start
+
+def max_pebbles_start(current_board, opponent_board):
+    """
+    Start at the hole that maximises the sum of pebbles left 
+    at the end of each turn.
+    """
+    for i in range(len(current_board)):
+        turn(current_board, opponent_board, i)
+        sum = pebbles_left(current_board)
+        if pebbles_left(current_board) > pebbles_left(current_board):
+            sum = pebbles_left(current_board)
+        start = current_board[i]
+    
     return start
