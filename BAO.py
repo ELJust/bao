@@ -17,4 +17,4 @@ game(p1_board, p2_board)
 # Overall Game    
 #define start /strategy
 # Game Over message :)
-        
+       

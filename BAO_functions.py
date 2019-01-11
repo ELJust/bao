@@ -3,7 +3,7 @@
 These are the functions for printing out the current status 
 of the board, defining the eat-move and how a turn works.
 """
-import random.py
+from numpy import random
 
 
 def print_field(p1_board, p2_board, hand1 = 0, hand2 = 0):
@@ -104,9 +104,9 @@ def random_start(current_board):
     """
     Start at a random non-empty hole.
     """     
-    start = random() * 16
+    start = random.randint(low = 0, high = 14) # random integers with high = one above the highest signed integer
     while current_board[start] == 0:
-        start = random() * 16
+        start = random.randint(low = 0, high = 14)
     return start
 
 def max_pebbles_start(current_board, opponent_board):
