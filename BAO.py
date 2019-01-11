@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-BAO...
+Run a game of BAO 10 times and store who won in how many turns.
 """
 from BAO_functions import game
 
@@ -13,8 +13,9 @@ hand = 0
 
 
 game(p1_board, p2_board)
-# To Do: 
-# Overall Game    
-#define start /strategy
-# Game Over message :)
+
+# To Do:     
+#define strategies
+# store result
+
        

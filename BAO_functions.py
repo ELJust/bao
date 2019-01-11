@@ -93,12 +93,19 @@ def pebbles_left(board):
     return sum_pebbles
 
 def game(p1_board, p2_board):
+    turn_count = 0
     while pebbles_left(p1_board) > 5 and pebbles_left(p2_board) > 5:
         turn(p1_board, p2_board, random_start(p1_board))
         print_field(p1_board, p2_board) 
         turn(p2_board, p1_board, random_start(p2_board))
         print_field(p1_board, p2_board)
-    print("Game Over.")
+        turn_count += 1
+        if pebbles_left(p1_board) > 5:
+            winning_player = 1
+        if pebbles_left(p1_board) >5:
+            winning_player = 1
+    print("Game Over. Player %d won." % winning_player)
+    print("Overall turns taken:", turn_count)
 
 def random_start(current_board):  
     """
