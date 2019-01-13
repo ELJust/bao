@@ -11,8 +11,8 @@ p1_board = [2] * 16
 p2_board = [2] *16 
 hand = 0
 
-
-game(p1_board, p2_board)
+for i in range(10):
+    game(p1_board, p2_board)
 
 # To Do:     
 #define strategies

@@ -1,41 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-These are the functions for printing out the current status 
-of the board, defining the eat-move and how a turn works.
+These are the functions for the basic game.
 """
-from numpy import random
 
+from board import print_field
+from strategies import random_start
 
-def print_field(p1_board, p2_board, hand1 = 0, hand2 = 0):
-    """ Return the current status of the board, including 
-    what is left in each player's hand
-    """
-    print('-------------- Player One --------------')
-    print('Pebbles in hand:' , hand1)
-    print('-----------------------------------------')
-    print('|' , p1_board[8], '||', p1_board[9], '||',
-      p1_board[10], '||', p1_board[11], '||', p1_board[12],
-      '||', p1_board[13], '||', p1_board[14], '||', p1_board[15],
-      '|' )
-    print('-----------------------------------------')
-    print('|' , p1_board[7], '||', p1_board[6], '||',
-      p1_board[5], '||', p1_board[4], '||', p1_board[3],
-      '||', p1_board[2], '||', p1_board[1], '||', p1_board[0],
-      '|')
-    print('-----------------------------------------')
-    print('-----------------------------------------')
-    print('|' , p2_board[0], '||', p2_board[1], '||',
-      p2_board[2], '||', p2_board[3], '||', p2_board[4],
-      '||', p2_board[5], '||', p2_board[6], '||', p2_board[7],
-      '|' )
-    print('-----------------------------------------')
-    print('|' , p2_board[15], '||', p2_board[14], '||',
-      p2_board[13], '||', p2_board[12], '||', p2_board[11],
-      '||', p2_board[10], '||', p2_board[9], '||', p2_board[8],
-      '|')
-    print('-----------------------------------------')
-    print('Pebbles in hand:', hand2)
-    print('-------------- Player Two --------------')
 
 
 def eat(i, opponent_board):
@@ -102,30 +72,7 @@ def game(p1_board, p2_board):
         turn_count += 1
         if pebbles_left(p1_board) > 5:
             winning_player = 1
-        if pebbles_left(p1_board) >5:
-            winning_player = 1
+        if pebbles_left(p2_board) >5:
+            winning_player = 2
     print("Game Over. Player %d won." % winning_player)
     print("Overall turns taken:", turn_count)
-
-def random_start(current_board):  
-    """
-    Start at a random non-empty hole.
-    """     
-    start = random.randint(low = 0, high = 14) # random integers with high = one above the highest signed integer
-    while current_board[start] == 0:
-        start = random.randint(low = 0, high = 14)
-    return start
-
-def max_pebbles_start(current_board, opponent_board):
-    """
-    Start at the hole that maximises the sum of pebbles left 
-    at the end of each turn.
-    """
-    for i in range(len(current_board)):
-        turn(current_board, opponent_board, i)
-        sum = pebbles_left(current_board)
-        if pebbles_left(current_board) > pebbles_left(current_board):
-            sum = pebbles_left(current_board)
-        start = current_board[i]
-    
-    return start
