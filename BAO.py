@@ -3,7 +3,8 @@
 Run a game of BAO 10 times and store who won and the turn count.
 """
 from BAO_functions import game
-
+#import subprocess
+#import sys
 
 for i in range(10):
     p1_board = [2] * 16
@@ -12,5 +13,10 @@ for i in range(10):
     game(p1_board, p2_board)
     # store/append result in a csv file
 
+
+     
+
 # To Do:     
 #define strategies
+# define save
+#def save_results():

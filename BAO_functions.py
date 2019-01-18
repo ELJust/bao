@@ -5,6 +5,7 @@ These are the functions for the basic game.
 
 from board import print_field
 from strategies import random_start
+import csv
 
 
 
@@ -76,3 +77,4 @@ def game(p1_board, p2_board):
             winning_player = 2
     print("Game Over. Player %d won." % winning_player)
     print("Overall turns taken:", turn_count)
+
