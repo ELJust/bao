@@ -3,17 +3,11 @@
 These are the functions for the basic game.
 """
 
-from board import print_field
-from strategies import random_start
-import csv
-
-
-
 def eat(i, opponent_board):
     """ Assign two opposing holes to each front-row hole of the current
     board.
-    Eat the pebbles of the opponent, iff both of the two opposing holes 
-    are filled. 
+    Eat (=take) the pebbles of the opponent, if, and only if, both of the two 
+    opposing holes are filled with at least one pebble. 
     """
     opp1 = 7-i
     opp2 = 8+i
@@ -31,7 +25,7 @@ def eat(i, opponent_board):
 def turn(current_board, opponent_board, start):
     hand = 0
     
-    """ Start by putting all pebbles of a given hole into
+    """ Start the turn by putting all pebbles of a given hole into
     the hand """
     hand += current_board[start]
     current_board[start] = 0
@@ -39,9 +33,9 @@ def turn(current_board, opponent_board, start):
     
     """ To move, put one pebble from hand into the neighbouring
     hole of the current board, until it is empty. 
-    If the last pebble from hand is put into a hole where there is at least one
-    pebble, put all into the hand plus the value from the opponent, if 
-    applicable. Continue moving.
+    If the last pebble from hand is put into a hole where there is at 
+    least one pebble, put all into the hand and eat the opponent's 
+    pebbles, if applicable. Continue moving.
     """
     while hand > 0:
         while hand > 0:
@@ -63,18 +57,4 @@ def pebbles_left(board):
     
     return sum_pebbles
 
-def game(p1_board, p2_board):
-    turn_count = 0
-    while pebbles_left(p1_board) > 5 and pebbles_left(p2_board) > 5:
-        turn(p1_board, p2_board, random_start(p1_board))
-        print_field(p1_board, p2_board) 
-        turn(p2_board, p1_board, random_start(p2_board))
-        print_field(p1_board, p2_board)
-        turn_count += 1
-        if pebbles_left(p1_board) > 5:
-            winning_player = 1
-        if pebbles_left(p2_board) >5:
-            winning_player = 2
-    print("Game Over. Player %d won." % winning_player)
-    print("Overall turns taken:", turn_count)
 

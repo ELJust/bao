@@ -1,21 +1,43 @@
 # -*- coding: utf-8 -*-
 """
-Run a game of BAO 10 times and store who won and the turn count.
+Run a game of BAO.
 """
-from BAO_functions import game
-#import subprocess
-#import sys
+from BAO_functions import turn
+from BAO_functions import pebbles_left
+from board import print_field
+from strategies import random_start
+from strategies import max_pebbles_start
 
-for i in range(10):
-    p1_board = [2] * 16
-    p2_board = [2] * 16 
-    hand = 0
-    game(p1_board, p2_board)
+
+def game(p1_board, p2_board):
+    """
+    The players take turns until one player has 5 or less pebbles left 
+    on their board.
+    """
+    turn_count = 0
+    while pebbles_left(p1_board) > 5 and pebbles_left(p2_board) > 5:
+        turn(p1_board, p2_board, max_pebbles_start(p1_board, p2_board))
+        print_field(p1_board, p2_board) 
+        turn(p2_board, p1_board, random_start(p2_board))
+        print_field(p1_board, p2_board)
+        turn_count += 1
+        if pebbles_left(p1_board) > 5:
+            winning_player = 1
+        if pebbles_left(p2_board) >5:
+            winning_player = 2
+    print("Game Over. Player %d won." % winning_player)
+    print("Overall turns taken:", turn_count)
+
+
+p1_board = [2] * 16
+p2_board = [2] * 16 
+hand = 0
+game(p1_board, p2_board)
     # store/append result in a csv file
-
-
      
 
+board_status = p1_board.copy
+print(board_status)
 # To Do:     
 #define strategies
 # define save
