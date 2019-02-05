@@ -11,8 +11,8 @@ def eat(i, opponent_board):
     """
     opp1 = 7-i
     opp2 = 8+i
-
     add_to_hand = 0
+    
     if i >= 0 and i <= 7:
         if opponent_board[opp1] > 0 and opponent_board[opp2] > 0:
             add_to_hand = opponent_board[opp1] + opponent_board[opp2]
@@ -23,10 +23,9 @@ def eat(i, opponent_board):
 
 
 def turn(current_board, opponent_board, start):
-    hand = 0
-    
     """ Start the turn by putting all pebbles of a given hole into
     the hand """
+    hand = 0
     hand += current_board[start]
     current_board[start] = 0
     i = start 
@@ -52,6 +51,7 @@ def pebbles_left(board):
     """ Check how many pebbles are left on a given board.
     """
     sum_pebbles = 0
+    
     for i in range(16):
         sum_pebbles += board[i]
     
