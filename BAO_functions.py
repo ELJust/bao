@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-These are the functions for the basic game.
+These are the functions for the basic game to run.
 """
 
 def eat(i, opponent_board):
