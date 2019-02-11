@@ -13,7 +13,9 @@ def game(p1_board, p2_board):
     """
     The players take turns until one player has 5 or less pebbles left 
     on their board.
+    Stop if the game takes too long.
     """
+    outcome = None
     turn_count = 0
     #print_field(p1_board, p2_board)
     
@@ -44,6 +46,9 @@ for i in range(0, 100):
     p1_board = [2] * 16
     p2_board = [2] * 16 
     hand = 0
-    outcome = game(p1_board, p2_board)
-    result_to_file('results_min.csv', outcome)
+    result = game(p1_board, p2_board)
+    print(p1_board)
+    print(p2_board)
+    print(i)
+    result_to_file('results_min3.csv', result)
 
