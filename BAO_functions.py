@@ -30,7 +30,6 @@ def turn(current_board, opponent_board, start):
     hand += current_board[start]
     current_board[start] = 0
     i = start 
-    #print_field(p1_board, p2_board)
     
     """ To move, put one pebble from hand into the neighbouring
     hole of the current board, until it is empty. 
@@ -47,12 +46,10 @@ def turn(current_board, opponent_board, start):
             i = (i + 1) % 16
             current_board[i] += 1
             hand -= 1
-            #print_field(p1_board, p2_board)
         if current_board[i] > 1 and taken_up_pebbles < 20:
             hand += current_board[i]
             current_board[i] = 0 
             hand += eat(i, opponent_board)
-        #print_field(p1_board, p2_board)
     
 
 def pebbles_left(board):
