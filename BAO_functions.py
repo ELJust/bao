@@ -2,7 +2,7 @@
 """
 These are the functions for the basic game to run.
 """
-from board import print_field
+#from board import print_field
 
 def eat(i, opponent_board):
     """ Assign two opposing holes to each front-row hole of the current
@@ -30,7 +30,7 @@ def turn(current_board, opponent_board, start):
     hand += current_board[start]
     current_board[start] = 0
     i = start 
-    
+    #print_field(current_board, opponent_board)
     """ To move, put one pebble from hand into the neighbouring
     hole of the current board, until it is empty. 
     If the last pebble from hand is put into a hole where there is at 
@@ -46,10 +46,12 @@ def turn(current_board, opponent_board, start):
             i = (i + 1) % 16
             current_board[i] += 1
             hand -= 1
+            #print_field(current_board, opponent_board)
         if current_board[i] > 1 and taken_up_pebbles < 20:
             hand += current_board[i]
             current_board[i] = 0 
             hand += eat(i, opponent_board)
+        
     
 
 def pebbles_left(board):
