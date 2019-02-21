@@ -65,3 +65,12 @@ def pebbles_left(board):
     return sum_pebbles
 
 
+def game_status(current_board, opponent_board):
+    string = ''
+    for i in current_board:
+        string += str(i) +',' 
+    for i in opponent_board:
+        string += str(i) +',' 
+    hash_of_board_status = hash(string)
+    return hash_of_board_status
+
