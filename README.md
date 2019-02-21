@@ -1,4 +1,4 @@
-# Bao
+# Bao la Swahili
 
 Bao is an east-african two-player strategic game played on a board with 16 holes for each of the players, 8 holes on the inside, 8 on the outside row.
 At the beginning of the game, each hole is filled with two pebbles, so there are 64 pebbles in total on the board.
