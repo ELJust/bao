@@ -25,7 +25,7 @@ def play_game(strategy_p1, strategy_p2, max_allowed_turn_count):
     while pebbles_left(p1_board) > 5 and pebbles_left(p2_board) > 5 and turn_count < max_allowed_turn_count:
         turn(p1_board, p2_board, strategies(strategy_p1, p1_board, p2_board))
         #print(print_field(p1_board, p2_board))
-        turn(p2_board, p1_board, strategies(strategy_p2, p1_board, p2_board))
+        turn(p2_board, p1_board, strategies(strategy_p1, p1_board, p2_board))
         #print(print_field(p1_board, p2_board))
         turn_count += 1
 
@@ -45,15 +45,17 @@ def play_game(strategy_p1, strategy_p2, max_allowed_turn_count):
     
     return outcome
 
+#play_game(1, 1, 100)
+
+
 def play_multiple_games(strategy_p1, strategy_p2, max_allowed_turn_count, times):
     wins_p1 = 0
     wins_p2 = 0
     turns_p1 = 0
     turns_p2 = 0
-    avg_wins_p2 = 0
-    avg_wins_p1 = 0
     avg_turn_count_p1 = 0
     avg_turn_count_p2 = 0
+    
     for i in range(times):
         results = play_game(strategy_p1, strategy_p2, max_allowed_turn_count)
         #result_to_file('results_max_vs_random.csv', results)
@@ -63,16 +65,14 @@ def play_multiple_games(strategy_p1, strategy_p2, max_allowed_turn_count, times)
         if results['Winner'] == 2:
             wins_p2 += 1
             turns_p2 += results['turn count']
-    avg_wins_p1 = wins_p1/100
-    avg_wins_p2 = wins_p2/100
     if wins_p1 != 0:
         avg_turn_count_p1 = turns_p1/wins_p1
     if wins_p2 != 0:
         avg_turn_count_p2 = turns_p2/wins_p2
     ties = times - wins_p1 - wins_p2
     
-    print("Player 1 won on average {} times after an average of {} turns. \nPlayer 2 won on average {} times after an average of {} turns. \nPlayers tied {} times.".format(avg_wins_p1, avg_turn_count_p1, avg_wins_p2, avg_turn_count_p2, ties))
+    print("Player 1 won {} times after an average of {} turns. \nPlayer 2 won {} times after an average of {} turns. \nPlayers tied {} times.".format(wins_p1, avg_turn_count_p1, wins_p2, avg_turn_count_p2, ties))
 
 
-play_multiple_games(2, 1, 100, 1000)
+play_multiple_games(1, 1, 100, 10000)
         
