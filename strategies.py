@@ -23,6 +23,8 @@ def strategies(strategy, current_board, opponent_board):
         return min_pebbles_to_steal(current_board, opponent_board)
     if strategy == 4:
         return maxmin(current_board, opponent_board)
+    if strategy == 5:
+        return human_player(current_board)
 
 def random_start(current_board):  
     """
@@ -154,5 +156,15 @@ def alpha_strategy(current_board, opponent_board, AI_data):
                 break
         if current_board[start] != 0:
             break
+        
+    return start
+
+
+
+def human_player(current_board):
+    start = int(input())
+    while current_board[start] == 0:
+        print("This hole ist empty. Please choose another one.")
+        start = int(input())
         
     return start

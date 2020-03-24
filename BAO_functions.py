@@ -3,7 +3,6 @@
 These are the functions for the basic game to run.
 """
 
-
 def eat(i, opponent_board):
     """ Assign two opposing holes to each front-row hole of the current
     board.
